@@ -11,15 +11,24 @@ services:
     ######################################################
     # Jenkins 
     jenkins:
-        image: jenkins/jenkins:lts-jdk11
+        image: jenkins/docker
         container_name: jenkins
+        build:
+            context: .
+        user: jenkins
         restart: always
         ports:
             -   ${JENKINS_HTTP}           # http_port  le client jenkins
             -   ${JENKINS_AGENT}          # agent_port  master / slave communication
 
         volumes:
-            -  ./jenkins_home:/var/jenkins_home:rw           # Data persistance
+            -  $PWD/jenkins_home:/var/jenkins_home          # Data persistance
 
         environment:
             - JENKINS_OPTS="--prefix=/jenkins"
+
+
+# l'utilisateur qui excute le docker compose doit avoir les
+# droit en écriture pour la création des volumes au lance du conteneur
+
+# docker-compose up -d

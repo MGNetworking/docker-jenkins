@@ -22,7 +22,8 @@ services:
             -   ${JENKINS_AGENT}          # agent_port  master / slave communication
 
         volumes:
-            -  $PWD/jenkins_home:/var/jenkins_home          # Data persistance
+            -  $PWD/jenkins_home:/var/jenkins_home          # le dossier de jenkins
+            - /var/run/docker.sock:/var/run/docker.sock     # accès au démon Docker
 
         environment:
             - JENKINS_OPTS="--prefix=/jenkins"

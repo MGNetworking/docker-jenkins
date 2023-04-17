@@ -3,25 +3,24 @@
 FROM jenkins/jenkins:lts-jdk11
 LABEL authors="Maxime Ghalem"
 
+# sélection de l'utilisateur root pour l'installation
 USER root
 
-# Configurer le référentiel
-# Mettez à jour
+# Mise à jour avant installation
 RUN apt-get update && apt-get full-upgrade -y
 
-# Puis l’installation des dépendances
-
+# Installation des dépendances
 RUN apt-get install \
     ca-certificates \
     curl \
     gnupg
 
-# Ajouter la clé GPG officielle de Docker
+# Ajout de la clé GPG officielle Docker
 RUN install -m 0755 -d /etc/apt/keyrings \
     && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
     && chmod a+r /etc/apt/keyrings/docker.gpg
 
-# Utilisez la commande suivante pour configurer le dépôt
+# Configuration du dépôt
 RUN echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
@@ -33,11 +32,8 @@ RUN apt-get update && apt-get full-upgrade -y
 # Installer la dernière version Docker
 RUN apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 
-# Ajoute l'utilisateur jenkins au groupe docker
+# Ajout du user jenkins au groupe docker
 RUN usermod -aG docker jenkins
-
-# données les droits d'accès au sock docker
-RUN chown 1000:1000 /var/run/docker.sock
 
 # retour au user jenkins
 USER jenkins

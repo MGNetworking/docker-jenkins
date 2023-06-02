@@ -1,6 +1,6 @@
 ######################################################
-# Serveur de déploiement 
-# 
+# Serveur de déploiement
+#
 ######################################################
 # reference docker hub
 # jenkins/jenkins:lts-jdk11 => https://hub.docker.com/layers/jenkins/jenkins/lts-jdk11/images/sha256-8f7043722b3bb576fde60fa4ab59465a4b77e677c92774514897301ab77825a3?context=explore
@@ -8,8 +8,6 @@
 version: '3.8'
 
 services:
-    ######################################################
-    # Jenkins 
     jenkins:
         image: jenkins/docker
         container_name: jenkins
@@ -22,14 +20,8 @@ services:
             -   ${JENKINS_AGENT}          # agent_port  master / slave communication
 
         volumes:
-            -  $PWD/jenkins_home:/var/jenkins_home          # le dossier de jenkins
-            - /var/run/docker.sock:/var/run/docker.sock     # accès au démon Docker
+            -  $PWD/jenkins_home:/var/jenkins_home          # Le dossier principale de jenkins
+            - /var/run/docker.sock:/var/run/docker.sock     # L'accès socket externe docker
 
         environment:
             - JENKINS_OPTS="--prefix=/jenkins"
-
-
-# l'utilisateur qui excute le docker compose doit avoir les
-# droit en écriture pour la création des volumes au lance du conteneur
-
-# docker-compose up -d

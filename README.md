@@ -28,7 +28,14 @@ Après avoir exécuté cette commande, le fichier init.sh pourra être lancé av
 ./init.sh
 ```
 
+Adresse ip d'accès à Jenkins : 
+* Depuis le réseau interne : `192.168.1.30:7788/jenkins`
+* Depuis le PC local`localhost:7788/jenkins`
+* Depuis nom de domain : `nomdedomain:jenkins`
 
+NB : Pour rappel, le nom de domain renvoi vers une IP fix et le port 80.
+Une redirection doit être effectuée sur le routeur via son nom de domain.
+La redirect sera effectué après interception de la request par le reverse PROXY.
 
 
 

@@ -7,7 +7,7 @@ sudo mkdir jenkins_home
 sudo chown -R 1000:1000 jenkins_home/
 
 # Démarrage du conteneur Jenkins avec Docker Compose
-docker compose -f docker-compose-nas.yml up -d
+docker-compose -f docker-compose-nas.yml up -d
 
 # Voir les logs
-docker compose -f docker-compose-nas.yml  logs -f
+docker-compose -f docker-compose-nas.yml  logs -f

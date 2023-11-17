@@ -13,7 +13,9 @@ RUN apt-get update && apt-get full-upgrade -y
 RUN apt-get install \
     ca-certificates \
     curl \
-    gnupg
+    gnupg \
+    sudo \
+    jq
 
 # Ajout de la clé GPG officielle Docker
 RUN install -m 0755 -d /etc/apt/keyrings \
@@ -32,8 +34,9 @@ RUN apt-get update && apt-get full-upgrade -y
 # Installer la dernière version Docker
 RUN apt-get install docker-ce-cli containerd.io -y
 
+ARG GID_DOCKER
 # création d'un groupe docker
-RUN groupadd -g 1001 docker
+RUN groupadd -g ${GID_DOCKER} docker
 
 # Ajout du user jenkins au groupe docker
 RUN usermod -aG docker jenkins

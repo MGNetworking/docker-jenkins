@@ -1,0 +1,6 @@
+# Utiliser LF pour les fichiers déjà au format LF
+*.txt text eol=lf
+*.sh text eol=lf
+
+# Utiliser les paramètres par défaut pour les autres fichiers
+* text=auto

@@ -20,7 +20,7 @@ RUN install -m 0755 -d /etc/apt/keyrings \
     && curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg \
     && chmod a+r /etc/apt/keyrings/docker.gpg
 
-# Configuration du dépôt
+# Configuration du dépôt Docker pour les packages Debian
 RUN echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
@@ -30,12 +30,13 @@ RUN echo \
 RUN apt-get update && apt-get full-upgrade -y
 
 # Installer la dernière version Docker
-RUN apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+RUN apt-get install docker-ce-cli containerd.io -y
+
+# création d'un groupe docker
+RUN groupadd -g 1001 docker
 
 # Ajout du user jenkins au groupe docker
 RUN usermod -aG docker jenkins
 
 # retour au user jenkins
 USER jenkins
-
-

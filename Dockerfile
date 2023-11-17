@@ -10,7 +10,7 @@ USER root
 RUN apt-get update && apt-get full-upgrade -y
 
 # Installation des dépendances
-RUN apt-get install \
+RUN apt-get install -y \
     ca-certificates \
     curl \
     gnupg \

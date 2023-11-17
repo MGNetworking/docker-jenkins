@@ -8,9 +8,18 @@
 
 ### But
 
-Le but de ce projet et la personnalisation le programme Jenkins de manière à pouvoir interagir avec la CLI du docker
-Host. J'ai repris une image jenkins certifier en y ajoutent une configuration docker cli et container IO.
+Le but de ce projet et la personnalisation le programme [Jenkins](https://www.jenkins.io/) de manière à pouvoir
+interagir avec la CLI du docker Host. J'ai repris une image jenkins certifier en y ajoutent une configuration docker cli
+et container IO.
 Pour plus de détail sur son fonctionnement voir la partie `Dockerfile`.
+
+Voir aussi [Le projet de Gouvernance ](https://www.jenkins.io/project/governance/) pour des informations sur le projet
+open source, leur philosophie, valeurs et pratiques de développement. Le code de conduite de Jenkins peut être
+consulté [ici](https://www.jenkins.io/project/conduct/) et aussi le GitHub de
+jenkins [ici](https://github.com/jenkinsci).
+
+Exemple jenkins-workflow [ici](https://github.com/funkwerk/jenkins-workflow)
+Exemple jenkinsfile [ici](https://gist.github.com/merikan/228cdb1893fca91f0663bab7b095757c)
 
 ### Introduction
 

@@ -1,6 +1,6 @@
 # Image Jenkins avec ajout de docker
 
-FROM jenkins/jenkins:lts-jdk11
+FROM jenkins/jenkins:lts-jdk17
 LABEL authors="Maxime Ghalem"
 
 # sélection de l'utilisateur root pour l'installation

@@ -12,7 +12,6 @@ services:
   jenkins:
     image: jenkins/docker:lts-jdk17
     container_name: jenkins
-    network_mode: "host"
     build:
       context: ./
       dockerfile: Dockerfile

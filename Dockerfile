@@ -15,7 +15,9 @@ RUN apt-get install -y \
     curl \
     gnupg \
     sudo \
-    jq
+    jq \
+    nano \
+    python3
 
 # Ajout de la clé GPG officielle Docker
 RUN install -m 0755 -d /etc/apt/keyrings \

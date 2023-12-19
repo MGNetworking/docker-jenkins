@@ -13,6 +13,7 @@ pipeline {
                     curl --version
                     jq --version
                     python3 --version
+                    ls -al
                     """
             }
         }

@@ -11,7 +11,7 @@
 
 Le but de ce projet et la personnalisation le programme [Jenkins](https://www.jenkins.io/) de manière à pouvoir
 interagir avec la CLI du docker Host. J'ai repris une image jenkins certifier en y ajoutent une configuration docker cli
-et container IO.
+et conteneur IO.
 Pour plus de détail sur son fonctionnement voir la partie `Dockerfile`.
 
 ### Introduction
@@ -22,30 +22,26 @@ Ce projet est composé des fichiers suivants :
   du [Reference docker hub]( https://hub.docker.com/layers/jenkins/jenkins/lts-jdk11/images/sha256-8f7043722b3bb576fde60fa4ab59465a4b77e677c92774514897301ab77825a3?context=explore)
 * Un docker compose qui permettra lancer la construction de l'image jenkins.
   Et à partir de cette image créera un conteneur docker de l'image Jenkins
-* Un fichier script `init-nas.sh` qui initialise le projet pour le Nas Synology. Il créera le
+* Un fichier script `run-nas.sh` qui initialise le projet pour le Nas Synology. Il créera le
   volume `jenkins_home/` avec les droits utilisateur et groupe configurer et lancera le docker compose ainsi que les
   logs du conteneur en cours d'exécution.
 
 ### RUN
 
 Pour lancer l'exécution de ce projet après l'avoir récupéré de dépôt, vous devez modifier les droits
-d'exécution du fichier `init-nas.sh`. Voici la commande à exécuter :
+d'exécution du fichier `run-nas.sh`. Voici la commande à exécuter :
 
 ```shell
 # modification des droit d'exécution
-sudo chmod +x init-nas.sh init-dev.sh
+sudo chmod +x run-nas.sh run.sh
 ```
 
-Exécution du script pour le Nas
+Ces Scripts sont était conçu pour une version de `docker compose` différente
 
 ```shell
-./init-nas.sh
-```
+./run.sh
 
-Exécution du script pour le Dev
-
-```shell
-./init-dev.sh
+./run-nas.sh
 ```
 
 ### Accès navigateur

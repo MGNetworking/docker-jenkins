@@ -1,11 +1,3 @@
-######################################################
-# Serveur de déploiement
-# reference docker hub
-# jenkins/jenkins:
-# lts-jdk11 => https://hub.docker.com/layers/jenkins/jenkins/lts-jdk11/images/sha256-8f7043722b3bb576fde60fa4ab59465a4b77e677c92774514897301ab77825a3?context=explore
-# lts-jdk17 => https://hub.docker.com/layers/jenkins/jenkins/lts-jdk17/images/sha256-5c0389ee86987e0d7da03f826bfec63648cba1dafc0d48f96785c23d2bf8088f?context=explore
-######################################################
-
 version: '3.8'
 
 services:

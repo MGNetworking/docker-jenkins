@@ -80,10 +80,10 @@ Order de lancement depuis la racine du projet :
 
 ```shell
 # création de l'images + push vers dépôt
-./build_push.sh
+./script/build_push.sh
 
 # création du conteneur
-./run.sh
+./script/run.sh
 ```
 
 ### Accès navigateur

@@ -10,22 +10,21 @@ version: '3.8'
 
 services:
   jenkins:
-    image: jenkins/docker:lts-jdk17
+    image: sonatype-nexus.backhole.ovh/jenkins:1.0.0
     container_name: jenkins
     build:
       context: ./
       dockerfile: Dockerfile
       args:
-        GID_DOCKER: ${GID_DOCKER_DEV}
+        GID_DOCKER: $DOCKER_GID        # groupe Id docker export
     user: jenkins
     restart: always
     ports:
       - ${JENKINS_HTTP}:8080            # http_port le client jenkins
       - ${JENKINS_AGENT}:50000          # agent_port master / slave communication
     volumes:
-      - ./jenkins_home:/var/jenkins_home:rw             # Le dossier principal de jenkins
+      - ./jenkins_home:/var/jenkins_home:rw           # Le dossier principal de jenkins
       - /var/run/docker.sock:/var/run/docker.sock     # L'accès socket externe docker
     environment:
       - JENKINS_OPTS="--prefix=/jenkins"  # prefix adresse IP
       - TRY_UPGRADE_IF_NO_MARKER=false    # Update plunging with Jenkins
-

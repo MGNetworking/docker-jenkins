@@ -17,6 +17,12 @@ j'ai apporté plusieurs couches des modifications.
 
 Pour plus de détail sur les modifications apportées voir la partie [Dockerfile](#dockerfile).
 
+NB : Si vous voulez utiliser ce projet et que vous possédez un dépot privet, vous n'aurez qu'à modifier, dans le fichier
+`.env` les références de votre dépôt.
+
+Aussi, ce projet contient des scripts `Bash`. Il est conçu pour fonctionner sur Os Linux. Mais avec Windows, vous pouvez
+utiliser [WSL](https://fr.wikipedia.org/wiki/Windows_Subsystem_for_Linux) qui un sous-système linux dans Windows.
+
 ### Les Scripts d'exécution
 
 Ce projet est composé des fichiers suivants :
@@ -82,10 +88,9 @@ Order de lancement depuis la racine du projet :
 
 ### Accès navigateur
 
-| Designation | Adresse ip jenkins                                                           |
-|-------------|------------------------------------------------------------------------------|
-| localhost   | [http://localhost:7788/jenkins](http://localhost:7788/jenkins)               |
-| Domain      | [https://jenkins.backhole.ovh/jenkins](https://jenkins.backhole.ovh/jenkins) |
+| Designation | Adresse ip jenkins                                             |
+|-------------|----------------------------------------------------------------|
+| localhost   | [http://localhost:7788/jenkins](http://localhost:7788/jenkins) |
 
 NB : Pour rappel, le nom de domain renvoi vers une IP fix et le port 80. Une redirection doit être effectuée
 vers un revers proxy. Le reverse proxy redirigera la connexion vers l'adresse `IP:PORT` du conteneur jenkins.

@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  jenkins:
+    image: ${DEPOT}/jenkins_ops:${VERSION}
+    container_name: jenkins
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        GID_DOCKER: $DOCKER_GID        # groupe Id docker export
+    user: jenkins
+    restart: always
+    ports:
+      - ${JENKINS_HTTP}           # http_port le client jenkins
+      - ${JENKINS_AGENT}          # agent_port master / slave communication
+    volumes:
+      - ./jenkins_home:/var/jenkins_home:rw           # Le dossier principal de jenkins
+      - /var/run/docker.sock:/var/run/docker.sock     # L'accès socket externe docker
+    environment:
+      - JENKINS_OPTS="--prefix=/jenkins"  # prefix adresse IP
+      - TRY_UPGRADE_IF_NO_MARKER=false    # Update plunging with Jenkins
